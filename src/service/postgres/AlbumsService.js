@@ -40,7 +40,7 @@ class AlbumsService {
     const fetchAlbum = await this._pool.query(queryAlbum);
     const fetchSong = await this._pool.query(querySong);
 
-    if (!fetchAlbum.rows.length) {
+    if (!fetchAlbum.rowCount) {
       throw new NotFoundError('Album tidak ditemukan');
     }
     return {

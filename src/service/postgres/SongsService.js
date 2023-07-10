@@ -31,10 +31,6 @@ class SongsService {
   }
 
   async getSongs(title = '', performer = '') {
-    /*
-    const result = await this._pool.query('SELECT id, title, performer FROM songs');
-    return result.rows.map(mapDBToSong);
-    */
     const query = {
       text: 'SELECT id, title, performer FROM songs WHERE title ILIKE $1 AND performer ILIKE $2',
       values: [`%${title}%`, `%${performer}%`],
@@ -56,7 +52,7 @@ class SongsService {
       throw new NotFoundError('Lagu tidak ditemukan');
     }
 
-    return result.rows.map(mapDBToSong)[0];
+    return mapDBToSong(result.rows[0]);
   }
 
   async editSongById(id, {
