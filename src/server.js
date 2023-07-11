@@ -7,10 +7,14 @@ const SongsValidator = require('./validator/songs');
 const AlbumsService = require('./service/postgres/AlbumsService');
 const SongsService = require('./service/postgres/SongsService');
 const ClientError = require('./exceptions/ClientError');
+const UsersService = require('./service/postgres/UsersService');
+const UsersValidator = require('./validator/users');
+const users = require('./api/users');
 
 const init = async () => {
   const albumsService = new AlbumsService();
   const songsService = new SongsService();
+  const usersService = new UsersService();
   const server = Hapi.server({
     port: process.env.PORT,
     host: process.env.HOST,
@@ -35,6 +39,11 @@ const init = async () => {
         service: songsService,
         validator: SongsValidator,
       },
+    },
+    {
+      plugin: users,
+      options: usersService,
+      validator: UsersValidator,
     },
   ]);
 
