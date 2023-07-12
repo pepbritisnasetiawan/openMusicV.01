@@ -1,8 +1,8 @@
-const { nanoid } = require("nanoid");
-const { Pool } = require("pg");
-const InvariantError = require("../../exceptions/InvariantError");
-const { mapDBToSong } = require("../../utils");
-const NotFoundError = require("../../exceptions/NotFoundError");
+const { nanoid } = require('nanoid');
+const { Pool } = require('pg');
+const InvariantError = require('../../exceptions/InvariantError');
+const { mapDBToSong } = require('../../utils');
+const NotFoundError = require('../../exceptions/NotFoundError');
 
 class SongsService {
   constructor() {

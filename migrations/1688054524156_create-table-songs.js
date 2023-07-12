@@ -34,7 +34,7 @@ exports.up = (pgm) => {
       notNull: true,
     },
     updated_at: {
-      type: "TEXT",
+      type: 'TEXT',
       notNull: true,
     },
   });
